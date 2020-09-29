@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  balena-audio-manager:
+    networks:
+    - traefik
+    dns: 
+    - consul-server
+    - 8.8.8.8
+    - 8.8.4.4
+    container_name: balena-audio-manager
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - ..:/workspace/BalenaAudioManager:cached
+    command: sleep infinity
+    ports:
+    - "3000:3000"
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.balena-audio-manager.rule=Host(`ae-balena-audio-manager.service.consul`)"
+    - "traefik.http.routers.balena-audio-manager.entrypoints=web"
+    - 'SERVICE_3000_NAME=balena-audio-manager'
+    - 'SERVICE_3000_TAGS=3000,http'
+
+networks:
+  traefik:
+    external: true

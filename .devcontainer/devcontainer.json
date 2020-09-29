@@ -1,0 +1,12 @@
+{
+    "name": "Alpine 3.11 Node 12.15.0-r1",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "balena-audio-manager",
+    "workspaceFolder": "/workspace/BalenaAudioManager",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/ash"
+    },
+    "extensions": [
+        "svelte.svelte-vscode"
+    ]
+}
